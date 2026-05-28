@@ -3,6 +3,8 @@
   const toggle = document.querySelector(".nav-toggle");
   const mobileNav = document.getElementById("nav-mobile");
   const yearEl = document.getElementById("year");
+  const stickyCta = document.getElementById("cta-sticky");
+  const ctaBand = document.getElementById("contato");
 
   if (yearEl) {
     yearEl.textContent = String(new Date().getFullYear());
@@ -13,8 +15,25 @@
     if (!header) return;
     header.classList.toggle("is-scrolled", window.scrollY > 8);
   }
-  window.addEventListener("scroll", onScroll, { passive: true });
-  onScroll();
+  function updateStickyCta() {
+    if (!stickyCta) return;
+    const hero = document.querySelector(".hero");
+    const showAfter = hero ? hero.offsetHeight * 0.55 : 400;
+    const hideNearFooter = ctaBand
+      ? window.scrollY + window.innerHeight > ctaBand.offsetTop + 80
+      : false;
+    const show = window.scrollY > showAfter && !hideNearFooter;
+    stickyCta.classList.toggle("is-visible", show);
+    document.body.classList.toggle("has-sticky-cta", show);
+  }
+
+  function onScrollAll() {
+    onScroll();
+    updateStickyCta();
+  }
+
+  window.addEventListener("scroll", onScrollAll, { passive: true });
+  onScrollAll();
 
   /* Mobile menu */
   if (toggle && mobileNav) {
