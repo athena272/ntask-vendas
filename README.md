@@ -33,9 +33,17 @@ js/main.js      Menu mobile, scroll e animações
 .nojekyll       GitHub Pages
 ```
 
+## Cadastro (teste grátis)
+
+A seção `#cadastro` embute o formulário oficial do IdP:
+
+`https://idp-frontend-mz2ksprmhq-uc.a.run.app/embed/cadastro-cartorio`
+
+O domínio `https://athena272.github.io` precisa estar na allowlist do IdP (`frame-ancestors`). Isso é configurado no repositório **nTask-idp** — após alterar, é necessário **redeploy do frontend IdP**.
+
 ## Personalizar
 
-- CTAs e contato: seção `#contato` em `index.html` (WhatsApp e e-mail).
+- Cadastro e CTAs: seção `#cadastro` e `#contato` em `index.html`.
 - Cores da marca: variáveis CSS no topo de `css/main.css` (`--blue`, etc.).
 - Logo: hoje carregado de `auth.ntask.app`; para offline total, copie para `assets/logo.png` e atualize os `src`.
 
